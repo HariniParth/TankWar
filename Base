@@ -1,0 +1,96 @@
+package tank;
+
+import java.awt.Graphics;
+import java.awt.Image;
+
+import javax.swing.JPanel;
+
+
+public abstract class Base {
+  
+  public int x;
+  public int y;
+  public double ang;
+  public int width;
+  public int height;
+  public Image img;
+  public int speed;
+  public JPanel panel;
+    public int hurt;
+  public boolean isUsed = false;
+  public boolean isUsed() {
+    return isUsed;
+  }
+  public void setUsed(boolean isUsed) {
+    this.isUsed = isUsed;
+  }
+
+  public int getSpeed() {
+    return speed;
+  }
+  public void setSpeed(int speed) {
+    this.speed = speed;
+  }
+  public int getHurt() {
+    return hurt;
+  }
+  public void setHurt(int hurt) {
+    this.hurt = hurt;
+  }
+  abstract void move();
+
+  public JPanel getPanel() {
+    return panel;
+  }
+  public void setPanel(JPanel panel) {
+    this.panel = panel;
+  }
+  public abstract void draw(Graphics g);
+  public Base() {
+  }
+  public Base(int x, int y, int width, int height, double ang, Image img) {
+    super();
+    this.x = x;
+    this.y = y;
+    this.width = width;
+    this.height = height;
+    this.ang = ang;
+    this.img = img;
+  }
+  public int getX() {
+    return x;
+  }
+  public void setX(int x) {
+    this.x = x;
+  }
+  public int getY() {
+    return y;
+  }
+  public void setY(int y) {
+    this.y = y;
+  }
+  public double getAng() {
+    return ang;
+  }
+  public void setAng(double y) {
+    this.ang = y;
+  } 
+  public int getWidth() {
+    return width;
+  }
+  public void setWidth(int width) {
+    this.width = width;
+  }
+  public int getHeight() {
+    return height;
+  }
+  public void setHeight(int height) {
+    this.height = height;
+  }
+  public Image getImg() {
+    return img;
+  }
+  public void setImg(Image img) {
+    this.img = img;
+  }
+}
