@@ -1,0 +1,169 @@
+package tank;
+
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Rectangle;
+import java.io.File;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+
+public class WallUB extends Base {
+
+    Image wall;
+    
+    public WallUB(){
+        wall = new ImageIcon("C:/Resources/Wall11.png").getImage();
+    }
+    
+    public WallUB(Image img,int x, int y){
+        this.img=img;
+        this.x=x;
+        this.y=y;
+    }
+    public Image getImage(Image img){
+        try {
+            img = ImageIO.read(new File("C:/Resources/Wall11.png"));
+        }catch (Exception e) {
+            System.out.print("No resources are found");
+        }
+        return img;
+    }
+
+    public void draw(Graphics g){
+        
+        try {
+            wall = ImageIO.read(new File("C:/Resources/Wall11.png"));
+        }catch (Exception e) {
+            System.out.print("No resources are found");
+        }
+        
+        for(int y=0;y<690;y+=30)
+        g.drawImage(wall, x, y, panel);
+    }
+    
+    public void draw2(Graphics g){
+        
+        try {
+            wall = ImageIO.read(new File("C:/Resources/Wall11.png"));
+        }catch (Exception e) {
+            System.out.print("No resources are found");
+        }
+        
+        for(int y=0;y<690;y+=30)
+        g.drawImage(wall, x+688, y, panel);
+    }
+    
+    public void draw3(Graphics g){
+        
+        try {
+            wall = ImageIO.read(new File("C:/Resources/Wall11.png"));
+        }catch (Exception e) {
+            System.out.print("No resources are found");
+        }
+        
+        for(int x=0;x<690;x+=30){
+        g.drawImage(wall, x, y, panel);
+    }
+    }
+        public void draw4(Graphics g){
+        
+        try {
+            wall = ImageIO.read(new File("C:/Resources/Wall11.png"));
+        }catch (Exception e) {
+            System.out.print("No resources are found");
+        }
+        
+        for(int x=0;x<690;x+=30){
+        g.drawImage(wall, x, y+660, panel);
+    }
+    }
+        
+    /*    for(int y=0;y<690;y+=30){
+            g.drawImage(wall, x, y, panel);
+        }
+        for(int y=0;y<690;y+=30){
+            g.drawImage(wall, x+690, y, panel);
+        }
+        for(int y=150;y<210;y+=30){
+            g.drawImage(wall, x+450, y, panel);
+        }
+        for(int y=480;y<540;y+=30){
+            g.drawImage(wall, x+240, y, panel);
+        }
+        for(int x=0;x<690;x+=30){
+            g.drawImage(wall, x, y, panel);
+        }
+        for(int y=120;y<180;y+=30){
+            g.drawImage(wall, x+90, y, panel);
+        }
+        for(int y=510;y<570;y+=30){
+            g.drawImage(wall, x+600, y, panel);
+        }
+        for(int x=540;x<630;x+=30){
+            g.drawImage(wall, x, y+570, panel);
+        }
+        for(int x=540;x<630;x+=30){
+            g.drawImage(wall, x, y+480, panel);
+        }
+        for(int x=90;x<180;x+=30){
+            g.drawImage(wall, x, y+90, panel);
+        }
+        for(int x=90;x<180;x+=30){
+            g.drawImage(wall, x, y+180, panel);
+        }
+        for(int x=0;x<690;x+=30){
+            g.drawImage(wall, x, y+660, panel);
+        }
+        for(int x=0;x<150;x+=30){
+            g.drawImage(wall, x, y+330, panel);
+        }
+        for(int x=240;x<330;x+=30){
+            g.drawImage(wall, x, y+330, panel);
+        }
+        for(int x=240;x<480;x+=30){
+            g.drawImage(wall, x, y+210, panel);
+        }
+        for(int x=240;x<480;x+=30){
+            g.drawImage(wall, x, y+450, panel);
+        }
+        
+        for(int x=390;x<480;x+=30){
+            g.drawImage(wall, x, y+330, panel);
+        }
+        for(int x=570;x<690;x+=30){
+            g.drawImage(wall, x, y+330, panel);
+        }
+        for(int x=0;x<150;x+=30){
+            g.drawImage(wall, x, y+300, panel);
+        }
+        for(int x=240;x<330;x+=30){
+            g.drawImage(wall, x, y+300, panel);
+        }
+        for(int x=390;x<480;x+=30){
+            g.drawImage(wall, x, y+300, panel);
+        }
+        for(int x=570;x<690;x+=30){
+            g.drawImage(wall, x, y+300, panel);
+        }
+        for(int x=0;x<150;x+=30){
+            g.drawImage(wall, x, y+360, panel);
+        }
+        for(int x=240;x<330;x+=30){
+            g.drawImage(wall, x, y+360, panel);
+        }
+        for(int x=390;x<480;x+=30){
+            g.drawImage(wall, x, y+360, panel);
+        }
+        for(int x=570;x<690;x+=30){
+            g.drawImage(wall, x, y+360, panel);
+        } */
+    
+
+    @Override
+    void move() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
+}
