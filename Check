@@ -1,0 +1,41 @@
+package tank;
+
+import java.awt.Rectangle;
+
+
+public class Check {
+
+
+  public static boolean C1(Bullet ball, WallB wall) {
+    Rectangle a = new Rectangle(ball.getX(), ball.getY(), ball.getWidth(),
+        ball.getHeight());
+    Rectangle b = new Rectangle(wall.getX(), wall.getY(), wall
+        .getWidth(), wall.getHeight());
+    return a.intersects(b);
+  }
+
+  public static boolean C2(Bullet ball, Enemy player2) {
+    Rectangle a = new Rectangle(ball.getX(), ball.getY(), ball.getWidth(),
+        ball.getHeight());
+    Rectangle b = new Rectangle(player2.getX(), player2.getY(), player2
+        .getWidth(), player2.getHeight());
+    return a.intersects(b);
+  }
+
+  public static boolean C3(Bullet ball, Player player1) {
+    Rectangle a = new Rectangle(ball.getX(), ball.getY(), ball.getWidth(),
+        ball.getHeight());
+    Rectangle b = new Rectangle(player1.getX(), player1.getY(), player1
+        .getWidth(), player1.getHeight());
+    return a.intersects(b);
+  }
+  
+  public static boolean C4(Bullet ball, Bonus bonus) {
+    Rectangle a = new Rectangle(ball.getX(), ball.getY(), ball.getWidth(),
+        ball.getHeight());
+    Rectangle b = new Rectangle(bonus.getX(), bonus.getY(), bonus
+        .getWidth(), bonus.getHeight());
+    return a.intersects(b);
+  }
+
+}
