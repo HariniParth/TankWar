@@ -1,0 +1,57 @@
+package tank;
+
+
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+/**
+ *
+ * @author Harini
+ */
+public class EBullet extends Bullet{
+
+    BufferedImage bg =null;
+    int a; Image p,q;
+    public static boolean right,left,space;
+    
+    
+  public EBullet() throws IOException {
+    this.img = ImageIO.read(new File("C:/Resources/bullet.png"));
+    bg = (BufferedImage)img;
+  }
+  public EBullet(int x, int y, int w, int h,double ang) {
+    this.x = x;
+    this.y = y;
+    this.width = w;
+    this.height = h;
+    this.ang = ang;
+    
+  }
+    
+    public void move(double a)  {
+      ang = a;
+
+          x += -10*Math.cos(Math.toRadians(ang));
+          y += -10*Math.sin(Math.toRadians(ang));
+
+} 
+
+
+  @Override
+  public void draw(Graphics g) {
+      img = bg.getSubimage(a*15,0,15, 15);
+      g.drawImage(img, x+img.getWidth(panel)/2, y+img.getHeight(panel)/2, panel);
+
+  }
+
+    @Override
+    void move() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+}
