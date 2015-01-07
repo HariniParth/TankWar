@@ -1,0 +1,23 @@
+package tank;
+abstract public class Tanker extends Base {
+
+  public int life;
+
+  public int getLife() {
+    return life;
+  }
+
+  public void setLife(int life) {
+    this.life = life;
+  }
+
+  public Tanker() {
+  }
+
+  abstract void move();
+  
+  
+
+//  abstract Bullet[] shot();
+
+}
