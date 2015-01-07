@@ -1,0 +1,204 @@
+package tank;
+
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class Player extends Tanker {
+
+  Player player1;
+  public static boolean up, down, left, right,isFire; // The player's direction
+  int speed=1;
+  Graphics g;
+  BufferedImage bg =null,bfg=null;
+  Image p1,p2;
+  Check c;
+  
+  
+  public void setLife(int life) {
+    if (life <= 0)
+      life = 0;
+    if (life >= 100)
+      life = 100;
+    this.life = life;
+  }
+  
+  public Player (){
+      life = 100;
+  }
+  public Player(Image img, int x, int y) {
+    this.img = img;
+    this.x = x;
+    this.y = y;
+    life = 100;
+  }
+
+  
+  int a;
+  
+    public void draw(Graphics g) {
+      try {
+          p1 = ImageIO.read(new File("C:/Users/Harini/Documents/NetBeansProjects/Tank/src/Resources/TankStripe.png"));
+      } catch (IOException ex) {
+          Logger.getLogger(Player.class.getName()).log(Level.SEVERE, null, ex);
+      }
+        bg = (BufferedImage)p1;
+        p1 = bg.getSubimage(a*64,0,64, 64);
+        g.drawImage(p1, x, y, panel);
+ 
+    }
+
+    public void draw2(Graphics g){
+        try {
+          p2 = ImageIO.read(new File("C:/Resources/Tank2Stripe.png"));
+      } catch (IOException ex) {
+          Logger.getLogger(Player.class.getName()).log(Level.SEVERE, null, ex);
+      }
+        bfg = (BufferedImage)p2;
+        p2 = bfg.getSubimage(a*64,0,64, 64);
+        g.drawImage(p2, x, y, panel);
+    }
+
+public double ang;
+
+
+  @Override
+  public void move() {
+
+    
+      if (Player.up) {
+          
+          
+          x += 5*Math.cos(Math.toRadians(ang));
+          y += 5*Math.sin(Math.toRadians(ang));
+        
+      
+    }
+    if (Player.down) {
+        
+          
+          x += -5*Math.cos(Math.toRadians(ang));
+          y += -5*Math.sin(Math.toRadians(ang));
+      
+    }
+    if (Player.right) {
+      
+        
+        if(a>=1){
+            a-=1;
+        }
+        if(a==0)a=59;
+        
+      
+       if(a>=0&&a<=2) ang=0;
+        else if (a>3&&a<=5)ang=345;
+        else if (a>5&&a<=7)ang=330;
+        else if (a>7&&a<=10)ang=315;
+        else if (a>10&&a<=13)ang=300;
+        else if (a>13&&a<=15)ang=285;
+        else if (a>15&&a<=17)ang=270;
+        else if (a>17&&a<=20)ang=255;
+        else if (a>20&&a<=23)ang=240;
+        else if (a>23&&a<=25)ang=225;
+        else if (a>25&&a<=27)ang=210;
+        else if (a>27&&a<=29)ang=195;
+        else if (a>29&&a<=33)ang=180;
+        else if (a>33&&a<=35)ang=165;
+        else if (a>35&&a<=37)ang=150;
+        else if (a>37&&a<=40)ang=135;
+        else if (a>40&&a<=43)ang=120;
+        else if (a>43&&a<=44)ang=105;
+        else if (a>44&&a<=47)ang=90;
+        else if (a>47&&a<=50)ang=75;
+        else if (a>50&&a<=53)ang=60;
+        else if (a>53&&a<=55)ang=45;
+        else if (a>55&&a<=57)ang=30; 
+        else if (a>57&&a<=59)ang=15; 
+        
+    
+    }
+  
+    if (Player.left) {
+
+          
+          a+=1; 
+        if(a==60)
+            a=1;
+        
+       if(a>=0&&a<=2) ang=0;
+        else if (a>3&&a<=5)ang=345;
+        else if (a>5&&a<=7)ang=330;
+        else if (a>7&&a<=10)ang=315;
+        else if (a>10&&a<=13)ang=300;
+        else if (a>13&&a<=15)ang=285;
+        else if (a>15&&a<=17)ang=270;
+        else if (a>17&&a<=20)ang=255;
+        else if (a>20&&a<=23)ang=240;
+        else if (a>23&&a<=25)ang=225;
+        else if (a>25&&a<=27)ang=210;
+        else if (a>27&&a<=29)ang=195;
+        else if (a>29&&a<=33)ang=180;
+        else if (a>33&&a<=35)ang=165;
+        else if (a>35&&a<=37)ang=150;
+        else if (a>37&&a<=40)ang=135;
+        else if (a>40&&a<=43)ang=120;
+        else if (a>43&&a<=44)ang=105;
+        else if (a>44&&a<=47)ang=90;
+        else if (a>47&&a<=50)ang=75;
+        else if (a>50&&a<=53)ang=60;
+        else if (a>53&&a<=55)ang=45;
+        else if (a>55&&a<=57)ang=30; 
+        else if (a>57&&a<=59)ang=15; 
+       
+    }
+        
+    
+  }
+  public double getAngle(){
+      return ang;
+  }
+
+  public void rollback(){
+      
+          x -= 5*Math.cos(Math.toRadians(ang));
+          y -= 5*Math.sin(Math.toRadians(ang));
+  }
+  
+    public void rollback2(){
+      
+          x += 5*Math.cos(Math.toRadians(ang));
+          y += 5*Math.sin(Math.toRadians(ang));
+  }
+  
+    
+    public PBullet [] shot() throws IOException {
+
+    PBullet bullet[] = new PBullet[Constant.PBULLTE_NUMBER];
+    for (int i = 0; i < Constant.PBULLTE_NUMBER; i++) {
+      bullet[i] = new PBullet();
+      bullet[i].setX(x
+          + this.width
+          / (Constant.PBULLTE_NUMBER == 1 ? 2
+              : Constant.PBULLTE_NUMBER - 1) * i-4);
+      if(Constant.PBULLTE_NUMBER==1){
+        bullet[i].setX(x
+          + this.width/2-4);
+      }
+      bullet[i].setY(y);
+      bullet[i].setWidth(8);
+      bullet[i].setHeight(15);
+      bullet[i].setHurt(Constant.PBULLTE_HURT);
+    }
+    return bullet;
+  }
+
+
+}
