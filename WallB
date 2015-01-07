@@ -1,0 +1,62 @@
+package tank;
+
+import java.awt.Graphics;
+import java.awt.Image;
+import java.io.File;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+
+
+public class WallB extends Base {
+
+    Image wall;
+    
+    public WallB(){
+        this.img = new ImageIcon("C:/Resources/Wall22.png").getImage();
+    }
+    
+    public WallB(Image img,int x, int y){
+        this.img=img;
+        this.x=x;
+        this.y=y;
+    }
+    
+    @Override
+    void move() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    @Override
+    public void draw(Graphics g) {
+        try {
+            wall = ImageIO.read(new File("C:/Resources/Wall22.png"));
+        }catch (Exception e) {
+            System.out.print("No resources are found");
+        } 
+        
+        g.drawImage(wall, x, y, panel);
+        
+    /*    for(int x=570;x<690;x+=30){
+            g.drawImage(wall, x, y+90, panel);
+        }
+        for(int x=30;x<150;x+=30){
+            g.drawImage(wall, x, y+570, panel);
+        }
+        
+        for(int y=30;y<210;y+=30){
+            g.drawImage(wall, x+330, y, panel);
+        }
+        for(int y=30;y<210;y+=30){
+            g.drawImage(wall, x+360, y, panel);
+        }
+        for(int y=480;y<660;y+=30){
+            g.drawImage(wall, x+360, y, panel);
+        }
+        for(int y=480;y<660;y+=30){
+            g.drawImage(wall, x+330, y, panel);
+        } */
+    }
+
+    
+
+    
+}
