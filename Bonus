@@ -1,0 +1,43 @@
+package tank;
+
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+
+/**
+ *
+ * @author Harini
+ */
+public class Bonus extends Base {
+
+    Image p1;
+    BufferedImage bg =null;
+    int a;
+    public Bonus(Image img, int x, int y){
+        this.img=img;
+        this.x=x;
+        this.y=y;
+    }
+    @Override
+    void move() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void draw(Graphics g) {
+        try {
+          p1 = ImageIO.read(new File("C:/Resources/Ball_strip.png"));
+      } catch (IOException ex) {
+          Logger.getLogger(Player.class.getName()).log(Level.SEVERE, null, ex);
+      }
+        bg = (BufferedImage)p1;
+        p1 = bg.getSubimage(a*29,0,29, 29);
+        g.drawImage(p1, x, y, panel);
+    }
+    
+}
