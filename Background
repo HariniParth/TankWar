@@ -1,0 +1,36 @@
+package tank;
+
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.ImageObserver;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+
+public class Background {
+    private final Image img;
+    JPanel panel;
+    Graphics g;
+    
+    public Background() {
+    this.img = new ImageIcon("C:/Resources/background.png").getImage();
+  }
+    
+    public void draw(Graphics g) {
+            
+    int TileWidth = img.getWidth(panel);
+        int TileHeight = img.getHeight(panel);
+
+        int NumberX = (int) (730 / TileWidth);
+        int NumberY = (int) (720 / TileHeight);
+
+        for (int i = -1; i <= NumberY; i++) {
+            for (int j = 0; j <= NumberX; j++) {
+                g.drawImage(img, j * TileWidth, 
+                        i * TileHeight, TileWidth, 
+                        TileHeight,panel);
+            }
+        }
+        
+    }
+    
+}
