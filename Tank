@@ -1,0 +1,34 @@
+package tank;
+
+import java.applet.Applet;
+import java.awt.BorderLayout;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import javax.swing.JFrame;
+import javax.swing.JLayeredPane;
+import javax.swing.JPanel;
+
+public class Tank extends Applet {
+    
+    public Tank() throws IOException{
+        JFrame frame = new JFrame();
+        frame.setTitle("Tank");
+        frame.setSize(730,720);
+        frame.setResizable(false);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        GameCore gc = new GameCore();
+        JLayeredPane lp = new JLayeredPane();
+        frame.setLayout(new BorderLayout());
+        frame.add(lp,BorderLayout.CENTER);
+        lp.add(gc, new Integer(0), 0);
+        gc.setBounds(0, 0, 720, 720);
+        frame.setVisible(true);
+        gc.requestFocus();        
+        gc.StartRun();
+    }
+    
+    public static void main(String args[]) throws IOException{
+        new Tank();
+    }
+    
+}
